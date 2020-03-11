@@ -11,6 +11,7 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import org.telegram.telegrambots.meta.api.objects.Message;
 
 /** QDiceRollBot Implementación de un bot con tiradas de dados para las partidas online de Rol. */
 public class QDiceRollBot extends TelegramLongPollingBot {
@@ -58,27 +59,42 @@ public class QDiceRollBot extends TelegramLongPollingBot {
   @Override
   public void onUpdateReceived(Update update) {
 
+      
+      
     // Se comprueba si la actualización contiene un mensaje
-    if (update.hasMessage() && update.getMessage().hasText()) {
+      if ((update.hasMessage() && update.getMessage().hasText()) || update.hasCallbackQuery()) {
       SendMessage message;
+      Message inputMessage = update.getMessage();
+      String callback = update.hasCallbackQuery()? update.getCallbackQuery().getData():null;
+      String command = callback==null?inputMessage.getText():callback;
+      long chatId= callback==null?inputMessage.getChatId():update.getCallbackQuery().getMessage().getChatId();
+      long messageId = callback==null?inputMessage.getMessageId():update.getCallbackQuery().getMessage().getMessageId();
+     
+
       try {
         // Si el mensaje contiene la cadena start devolvemos el mensaje "bot Iniciado" y cambiado el
         // keyboard.
-        if (update.getMessage().getText().indexOf(START) > 0) {
+
+	  System.out.println("Recibido orden "+command);
+
+	  if (command.indexOf(START) > 0) {
+	      
+	    System.out.println("Meensaje de start recibido");
           message = new SendMessage();
-          message
-              .setChatId(update.getMessage().getChatId())
-              .setText("Bot iniciado")
+          message.setText("Bot iniciado")
               .setReplyMarkup(KeyBoardFactory.buildKeyBoard(KeyBoardFactory.MAIN_KB_ID));
         }
         // Si el mensaje no contiene la cadena start,
         // aplicamos el manejador correspondiente.
 
         else {
+	    System.out.println("Mensaje de handler recibido");
           message =
-              HandlerManager.getHandler(update.getMessage().getText())
-                  .handleMessage(update.getMessage());
+              HandlerManager.getHandler(command)
+	      .handleMessage(update.getMessage(),callback);
+	 
         }
+	  message.setChatId(chatId).setReplyToMessageId((int)messageId);
         execute(message); // Devolver el mensaje
       } catch (TelegramApiException e) {
         e.printStackTrace();

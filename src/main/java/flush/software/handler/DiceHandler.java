@@ -24,11 +24,11 @@ public class DiceHandler implements IMessageHandler {
    * @param inputMessage Mensaje de entrada del bot
    * @return SendMessage respuesta del bot al mensaje
    */
-  public SendMessage handleMessage(Message inputMessage) throws KeyBoardException {
+    public SendMessage handleMessage(Message inputMessage,String callBackData) throws KeyBoardException {
     SendMessage response = new SendMessage();
-    response.setChatId(inputMessage.getChatId()).setText(rollDices(inputMessage.getText()));
+    response.setText(rollDices(inputMessage.getText()));
     response.setReplyMarkup((ReplyKeyboard) buildKeyBoard());
-    response.setReplyToMessageId(inputMessage.getMessageId());
+
     return response;
   }
 
@@ -66,7 +66,7 @@ public class DiceHandler implements IMessageHandler {
       total += result;
       sbf.append(String.valueOf((result))).append(",");
     }
-    // Se borra la �ltima coma
+    // Se borra la última coma
     sbf.deleteCharAt(sbf.length() - 1);
 
     // Solo si hay más de un dado se muestra el igual

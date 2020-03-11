@@ -1,0 +1,24 @@
+{"txtPCWeekJob":"¿A que vas a dedicar la semana de inactividad?",
+ "buttonsWeekJob":[[{"text":"Craftear","callback_data":"Inactividad|-2"}],
+		   [{"text":"GenerarRecursos para la Guild","callback_data":"Inactividad|-2"}],
+		   [{"text":"Investigar Quest","callback_data":"Inactividad|+2"}],
+		   [{"text":"Entrenar","callback_data":"Inactividad|0"}],
+		   [{"text":"Reciclarse","callback_data":"Inactividad|0"}],
+		   [{"text":"Resolver quest menor","callback_data":"Inactividad|+2"}]],
+     "inactivityResults":[
+	{"rangeInit":"-100","rangeEnd":"0","text":"Deserción\n Has hecho algo que ha molestado terriblemente a uno de los reclutas, que indignado abandona la guild. Una tirada de Diplomacia/Intimidar/Engañar DC 30 conseguira evitar el drama, en caso de no superar la tirada, la guild pierde 3 puntos de prestigio."},
+	{"rangeInit":"1","rangeEnd":"2","text":"Enfermedad\n No puedes realizar ninguna actividad druante el periodo de inactividad y necesitas una tirada de Sanar DC 20 para recuperarte. Si se falla la siguiente semana obtienes automaticamente el resultado de Achaques. Si Yarpen o Kaili se encuentran en la guild, pueden curarla usando su magia. El enfermo pierde 2 dias de inactividad, el lanzador realiza una tirada de 1d20+nivel_del_lanzador, si el resultado es 15+ se considera un resultado de \"Tranquilidad\", en caso contrario \"Achaques\" para el resto del periodo."},
+	{"rangeInit":"3","rangeEnd":"3","text":"Asalto\n Eres victima de un asalto durante alguna de tus salidas en solitario. Prueba de FUE o DES DC 15, si la pasas no hay efecto, si la fallas pierdes 5d10 mo y la reputación del gremio de se dañada, -2 puntos de reputación para la Guild."},
+	{"rangeInit":"4","rangeEnd":"4","text":"Gasto inesperado\n - 1d20 mo."},
+	{"rangeInit":"5","rangeEnd":"5","text":"Achaques\n -2 a las tiradas realizadas durante el periodo de inactividad."},
+	{"rangeInit":"6","rangeEnd":"11","text":"Tranquilidad\n Una semana tranquila, nada reseñable."},
+	{"rangeInit":"12","rangeEnd":"13","text":"Un trabajo bien hecho\n Obtienes 50 mo x nivel de prestigio de la guild. "},
+	{"rangeInit":"14","rangeEnd":"15","text":"Estoy que me salgo\n  +2 a las tiradas realizadas durante el periodo de inactividad"},
+	{"rangeInit":"16","rangeEnd":"16","text":"Contacto\n Estableces una relacion cercana con algun miembro de los alrededores, +1 punto de reputación para la Guild."},
+	{"rangeInit":"17","rangeEnd":"18","text":"Periodo de rebajas\n Encuentras un chollo en alguna de las tiendas de Pomar. Puedes comprar un objeto por valor maximo de 2000 con un 1d4x5 % de descuento."},
+	{"rangeInit":"19","rangeEnd":"19","text":"Maestro\n Practicas con alguien diestro en una materia en la que eres un inepto. Obtienes un rango en una skill en la que no tengas ningun rango."},
+	{"rangeInit":"20","rangeEnd":"20","text":"Experiencia reveladora\n Obtienes un nuevo rasgo (trait)"},
+	{"rangeInit":"21","rangeEnd":"100","text":"Nuevo recluta\n Tu buen hacer ha llamado la atención de alguien que se ofrece a trabajar para vosotros. El nivel del mismo es equivalente a la reputación de la guild."}
+     ],
+ "txtResult":"Tirada:%d. Bonus:%d. Total%d\n"
+}

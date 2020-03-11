@@ -11,11 +11,16 @@ public interface IMessageHandler {
   /** La expresiiÃ³n regular Java que activa el manejador */
   Pattern getActivationPatter();
 
-  /**
+
+      /**
    * Construye la respuesta.
    *
    * @param inputMessage Mensaje de entrada del bot
+   * @param callbackdata CallBackDAta, si lo hay
    * @return SendMessage respuesta del bot al mensaje
    */
-  SendMessage handleMessage(Message inputMessage) throws KeyBoardException;
+    SendMessage handleMessage(Message inputMessage,String callBackData) throws KeyBoardException;
+
+    
+
 }

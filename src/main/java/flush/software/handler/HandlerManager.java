@@ -31,8 +31,10 @@ public class HandlerManager {
   /** Obtiene el manejador adecuado para el mensaje obtenido */
   public static IMessageHandler getHandler(String message) throws HandleException {
 
+      System.out.println("Obteniendo Handler para" +message);
+      String messageProccesed = message.startsWith("/")?message.substring(1):message;
     for (IMessageHandler handler : handlers) {
-      if (handler.getActivationPatter().matcher(message).matches()) {
+      if (handler.getActivationPatter().matcher(messageProccesed).matches()) {
         return handler;
       }
     }
